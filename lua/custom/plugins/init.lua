@@ -7,6 +7,14 @@ return {
   -- TODO: AQUI IREI COLOCAR TODOS MEUS PLUGINS, EU ACHO:
   ----------------><----------------------------
 
+  -- NOTE:  -->startfy <--
+  {
+    'startup-nvim/startup.nvim',
+    requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('startup').setup { theme = 'startify' }
+    end,
+  },
   -- NOTE:  -->undotree <--
   {
     'jiaoshijie/undotree',
