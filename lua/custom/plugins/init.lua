@@ -6,6 +6,49 @@ return {
 
   -- TODO: AQUI IREI COLOCAR TODOS MEUS PLUGINS, EU ACHO:
   ----------------><----------------------------
+  --> NOTE: mini stuff
+  { 'echasnovski/mini.files', version = '*', opts = {} },
+  { 'echasnovski/mini.icons', version = false },
+  --> NOTE: flash stuff
+  {
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@type Flash.Config
+    opts = {},
+  -- stylua: ignore
+  keys = {
+    { "<leader>n", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "<leader>N", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    { "<leader>m", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+    { "<leader>M", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+  },
+  },
+  --> NOTE: terminal stuff
+  -- amongst your other plugins
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    opts = {--[[ things you want to change go here]]
+    },
+  },
+
+  -- NOTE:  -->Noice<--
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      'MunifTanjim/nui.nvim',
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      'rcarriga/nvim-notify',
+    },
+  },
 
   -- NOTE:  -->startfy <--
   {
