@@ -161,6 +161,11 @@ vim.keymap.set('i', '<F9>', '<ESC>', { desc = 'escape please' })
 vim.keymap.set('c', '<F9>', '<ESC>', { desc = 'escape please' })
 vim.keymap.set('t', '<F9>', '<ESC>', { desc = 'escape please' })
 vim.keymap.set('v', '<F9>', '<ESC>', { desc = 'escape please' })
+-- set leader w to save and leader q to quit
+vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>W', ':w!<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>l', ':q<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>L', ':q!<CR>', { noremap = true, silent = true })
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<ESC><ESC>', '<cmd>nohlsearch<CR>')
@@ -195,6 +200,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- NOTE: Aqui vou setar o comando pra iniciar o mini.files
 vim.api.nvim_set_keymap('n', '<leader>a', ':lua MiniFiles.open()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-a>', ':TagbarToggle<CR>', { noremap = true, silent = true })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -687,7 +693,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { handlebars = true, ts = true, js = true, c = true, cpp = true }
+        local disable_filetypes = { json = true, javascript = true, handlebars = true, ts = true, c = true, cpp = true }
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -840,7 +846,7 @@ require('lazy').setup({
         icons_enabled = true,
         theme = 'auto',
         component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
         disabled_filetypes = {
           statusline = {},
           winbar = {},

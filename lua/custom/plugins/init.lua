@@ -6,6 +6,42 @@ return {
 
   -- TODO: AQUI IREI COLOCAR TODOS MEUS PLUGINS, EU ACHO:
   ----------------><----------------------------
+  --> NOTE: tagbar stuff
+  { 'preservim/tagbar' },
+  --> NOTE: bigfile stuff
+  {
+    'LunarVim/bigfile.nvim',
+    opts = {
+      filesize = 5, -- size of the file in MiB, the plugin round file sizes to the closest MiB
+      pattern = { '*' }, -- autocmd pattern or function see <### Overriding the detection of big files>
+      features = { -- features to disable
+        'indent_blankline',
+        'illuminate',
+        'lsp',
+        'treesitter',
+        -- 'syntax',
+        -- 'matchparen',
+        -- 'vimopts',
+        'filetype',
+      },
+    },
+  },
+  --> NOTE: harpoon stuff
+  { 'nvim-lua/plenary.nvim' },
+  {
+    'ThePrimeagen/harpoon',
+    keys = { -- load the plugin only when using it's keybinding:
+      { '<leader>mm', "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = 'Go to Harpoon list' },
+      { '<leader>M', "<cmd>lua require('harpoon.mark').add_file()<cr>", desc = 'Add file to Harpoon' },
+      { '<leader>mn', "<cmd>lua require('harpoon.ui').nav_next()  <cr>", desc = 'Go to next Harpoon file' },
+      { '<leader>mp', "<cmd>lua require('harpoon.ui').nav_prev()<cr>", desc = 'Go to previous Harpoon file' },
+      { '<leader>1', "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", desc = 'Go to Harpoon[1]' },
+      { '<leader>2', "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", desc = 'Go to Harpoon[2]' },
+      { '<leader>3', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", desc = 'Go to Harpoon[3]' },
+      { '<leader>4', "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", desc = 'Go to Harpoon[4]' },
+      { '<leader>5', "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", desc = 'Go to Harpoon[5]' },
+    },
+  },
   --> NOTE: mini stuff
   { 'echasnovski/mini.files', version = '*', opts = {} },
   { 'echasnovski/mini.icons', version = false },
@@ -102,48 +138,48 @@ return {
     dependencies = 'nvim-lua/plenary.nvim',
     config = true,
     keys = { -- load the plugin only when using it's keybinding:
-      { '<leader>u', "<cmd>lua require('undotree').toggle()<cr>" },
+      { '<leader>u', "<cmd>lua require('undotree').toggle()<cr>", desc = 'Go to [u]ndo tree' },
     },
   },
   -- NOTE:  -->hlslens <--
   { 'kevinhwang91/nvim-hlslens' },
   -- NOTE:  -->to make nvim transparent <--
-  {
-    'xiyaowong/transparent.nvim',
-    opts = {
-
-      -- Optional, you don't have to run setup.
-      groups = { -- table: default groups
-        'Normal',
-        'NormalNC',
-        'Comment',
-        'Constant',
-        'Special',
-        'Identifier',
-        'Statement',
-        'PreProc',
-        'Type',
-        'Underlined',
-        'Todo',
-        'String',
-        'Function',
-        'Conditional',
-        'Repeat',
-        'Operator',
-        'Structure',
-        'LineNr',
-        'NonText',
-        'SignColumn',
-        'CursorLine',
-        'CursorLineNr',
-        'StatusLine',
-        'StatusLineNC',
-        'EndOfBuffer',
-      },
-      extra_groups = {}, -- table: additional groups that should be cleared
-      exclude_groups = {}, -- table: groups you don't want to clear
-    },
-  },
+  -- {
+  --   'xiyaowong/transparent.nvim',
+  --   opts = {
+  --
+  --     -- Optional, you don't have to run setup.
+  --     groups = { -- table: default groups
+  --       'Normal',
+  --       'NormalNC',
+  --       'Comment',
+  --       'Constant',
+  --       'Special',
+  --       'Identifier',
+  --       'Statement',
+  --       'PreProc',
+  --       'Type',
+  --       'Underlined',
+  --       'Todo',
+  --       'String',
+  --       'Function',
+  --       'Conditional',
+  --       'Repeat',
+  --       'Operator',
+  --       'Structure',
+  --       'LineNr',
+  --       'NonText',
+  --       'SignColumn',
+  --       'CursorLine',
+  --       'CursorLineNr',
+  --       'StatusLine',
+  --       'StatusLineNC',
+  --       'EndOfBuffer',
+  --     },
+  --     extra_groups = {}, -- table: additional groups that should be cleared
+  --     exclude_groups = {}, -- table: groups you don't want to clear
+  --   },
+  -- },
   -- NOTE: --> rose pine colorscheme<--
   {
     'rose-pine/neovim',
