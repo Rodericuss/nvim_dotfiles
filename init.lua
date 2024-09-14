@@ -197,6 +197,7 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+--
 
 -- NOTE: Aqui vou setar o comando pra iniciar o mini.files
 vim.api.nvim_set_keymap('n', '<leader>a', ':lua MiniFiles.open()<CR>', { noremap = true, silent = true })
@@ -237,6 +238,23 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 
 require('lazy').setup({
+  -- -- NOTE: debug rust stuff
+  -- {
+  --   'mrcjkb/rustaceanvim',
+  --   config = function()
+  --     local mason_registry = require 'mason-registry'
+  --     local codelldb = mason_registry.get_package 'codelldb'
+  --     local extension_path = codelldb:get_install_path() .. '/extension/'
+  --     local codelldb_path = extension_path .. 'adapter/codelldb'
+  --     local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
+  --     local cfg = require 'rustaceanvim.config'
+  --     vim.g.restaceanvim = {
+  --       dap = {
+  --         adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+  --       },
+  --     }
+  --   end,
+  -- },
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -596,7 +614,7 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         pyright = {},
-        rust_analyzer = {},
+        -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         jsonls = {

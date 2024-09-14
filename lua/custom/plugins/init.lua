@@ -8,6 +8,8 @@ return {
   ----------------><----------------------------
   --> NOTE: tagbar stuff
   { 'preservim/tagbar' },
+  --> NOTE: dropbar stuff
+  { 'Bekaboo/dropbar.nvim' },
   --> NOTE: bigfile stuff
   {
     'LunarVim/bigfile.nvim',
