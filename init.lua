@@ -326,7 +326,8 @@ require('lazy').setup({
         routes = {
           {
             view = 'notify',
-            filter = { event = 'msg_showmode' },
+            filter = { event = 'msg_showmode', find = '^.*WARNING.*vim.treesitter.get_parser.*$' },
+            opts = { skip = true },
           },
         },
       },
@@ -848,8 +849,9 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       -- vim.cmd.colorscheme 'rose-pine'
-      vim.cmd.colorscheme 'gruvbox-baby'
-      vim.cmd 'highlight Normal guibg=#000000 guifg=#ffffff'
+      -- vim.cmd.colorscheme 'gruvbox-baby'
+      vim.cmd.colorscheme 'nord'
+      -- vim.cmd 'highlight Normal guibg=#000000 guifg=#ffffff'
       -- vim.cmd.colorscheme 'tokyonight-night'
 
       -- You can configure highlights by doing something like:
@@ -866,7 +868,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'auto',
+        theme = 'nord',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
@@ -966,7 +968,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
+  -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
