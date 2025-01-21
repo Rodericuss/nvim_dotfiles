@@ -90,6 +90,18 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.o.list = false
+-- Set the width of a tab character
+vim.o.tabstop = 2
+
+-- Set the width used for editing operations (e.g., <Tab>)
+vim.o.softtabstop = 2
+
+-- Indentation width for auto-indents
+vim.o.shiftwidth = 2
+
+-- Use spaces instead of tabs
+vim.o.expandtab = true
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
