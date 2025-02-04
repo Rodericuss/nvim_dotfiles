@@ -90,7 +90,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.o.list = false
+vim.opt.list = false
 -- Set the width of a tab character
 vim.o.tabstop = 2
 
@@ -862,7 +862,8 @@ require('lazy').setup({
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       -- vim.cmd.colorscheme 'rose-pine'
       -- vim.cmd.colorscheme 'gruvbox-baby'
-      vim.cmd.colorscheme 'nord'
+      -- vim.cmd.colorscheme 'vscode_modern_theme.nvim'
+      -- vim.cmd.colorscheme 'nord'
       -- vim.cmd 'highlight Normal guibg=#000000 guifg=#ffffff'
       -- vim.cmd.colorscheme 'tokyonight-night'
 
