@@ -169,6 +169,22 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+vim.o.guifont = 'JetBrainsMono Nerd Font:h12'
+
+vim.keymap.set('n', '<C-=>', function()
+  local font = vim.o.guifont:gsub(':h(%d+)', function(size)
+    return ':h' .. (tonumber(size) + 1)
+  end)
+  vim.o.guifont = font
+end)
+
+vim.keymap.set('n', '<C-->', function()
+  local font = vim.o.guifont:gsub(':h(%d+)', function(size)
+    return ':h' .. math.max(1, tonumber(size) - 1)
+  end)
+  vim.o.guifont = font
+end)
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 -- set F9 insted of ESC to go to normal mode
@@ -863,7 +879,7 @@ require('lazy').setup({
       -- vim.cmd.colorscheme 'rose-pine'
       -- vim.cmd.colorscheme 'gruvbox-baby'
       -- vim.cmd.colorscheme 'vscode_modern_theme.nvim'
-      -- vim.cmd.colorscheme 'nord'
+      vim.cmd.colorscheme 'nord'
       -- vim.cmd 'highlight Normal guibg=#000000 guifg=#ffffff'
       -- vim.cmd.colorscheme 'tokyonight-night'
 
