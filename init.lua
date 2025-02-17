@@ -201,6 +201,8 @@ vim.api.nvim_set_keymap('n', '<leader>L', ':q!<CR>', { noremap = true, silent = 
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<ESC><ESC>', '<cmd>nohlsearch<CR>')
 
+-- NOTE: telescope file_browser keymap
+vim.keymap.set('n', '<space>sc', ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -879,7 +881,7 @@ require('lazy').setup({
       -- vim.cmd.colorscheme 'rose-pine'
       -- vim.cmd.colorscheme 'gruvbox-baby'
       -- vim.cmd.colorscheme 'vscode_modern_theme.nvim'
-      vim.cmd.colorscheme 'nord'
+      -- vim.cmd.colorscheme 'nord'
       -- vim.cmd 'highlight Normal guibg=#000000 guifg=#ffffff'
       -- vim.cmd.colorscheme 'tokyonight-night'
 
