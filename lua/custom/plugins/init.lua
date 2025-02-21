@@ -96,14 +96,82 @@ return {
     'folke/noice.nvim',
     event = 'VeryLazy',
     opts = {
-      -- add any options here
+      health = {
+        checker = false,
+      },
+      cmdline = {
+        format = {
+          cmdline = {
+            pattern = '^:',
+            icon = ' ',
+            lang = 'vim',
+          },
+          search_down = {
+            kind = 'search',
+            pattern = '^/',
+            icon = ' ',
+            lang = 'regex',
+          },
+          search_up = {
+            kind = 'search',
+            pattern = '^%?',
+            icon = ' ',
+            lang = 'regex',
+          },
+          filter = {
+            pattern = '^:%s*!',
+            icon = '$',
+            lang = 'bash',
+          },
+          lua = {
+            pattern = '^:%s*lua%s+',
+            icon = '',
+            lang = 'lua',
+          },
+          help = {
+            pattern = '^:%s*h%s+',
+            icon = '',
+          },
+          input = {},
+        },
+      },
+      -- opts = {
+      --   win_options = {
+      --     winhighlight = {
+      --       Normal = 'NormalFloat',
+      --       -- FloatBorder = 'FloatBorder',
+      --     },
+      --   },
+      -- },
+      -- lsp = {
+      --   progress = {
+      --     enabled = true,
+      --   },
+      --   override = {
+      --     -- ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+      --     -- ['vim.lsp.util.stylize_markdown'] = true,
+      --     -- ['cmp.entry.get_documentation'] = true,
+      --   },
+      -- },
+      views = {
+        cmdline_popup = {
+          position = { row = 2, col = '20%' },
+          size = { width = '58%' },
+          -- border = 'none',
+        },
+      },
+      -- presets = {
+      --   long_message_to_split = true,
+      --   lsp_doc_border = true,
+      -- },
+      -- popupmenu = {
+      --   backend = 'cmp',
+      -- },
+      -- format = {},
     },
     dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      'MunifTanjim/nui.nvim',
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
+      -- 'MunifTanjim/nui.nvim',
+      -- Optional: nvim-notify is only needed for the notification view
       'rcarriga/nvim-notify',
     },
   },
@@ -274,20 +342,28 @@ return {
     },
   },
   { 'luisiacc/gruvbox-baby' },
+  -- {
+  --   'gmr458/vscode_modern_theme.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require('vscode_modern').setup {
+  --       cursorline = true,
+  --       transparent_background = false,
+  --       nvim_tree_darker = true,
+  --     }
+  --     vim.cmd.colorscheme 'vscode_modern'
+  --   end,
+  -- },
   {
-    'gmr458/vscode_modern_theme.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('vscode_modern').setup {
-        cursorline = true,
-        transparent_background = false,
-        nvim_tree_darker = true,
-      }
-      vim.cmd.colorscheme 'vscode_modern'
-    end,
+    'nyoom-engineering/oxocarbon.nvim',
+    -- Add in any other configuration;
+    --   event = foo,
+    --   config = bar
+    --   end,
   },
   { 'shaunsingh/nord.nvim' },
+  { 'nvim-tree/nvim-tree.lua', opts = {} },
   --> NOTE: telescope file use stuff
   {
     'nvim-telescope/telescope-file-browser.nvim',

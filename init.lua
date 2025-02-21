@@ -882,6 +882,8 @@ require('lazy').setup({
       -- vim.cmd.colorscheme 'gruvbox-baby'
       -- vim.cmd.colorscheme 'vscode_modern_theme.nvim'
       -- vim.cmd.colorscheme 'nord'
+      vim.opt.background = 'dark' -- set this to dark or light
+      vim.cmd.colorscheme 'oxocarbon'
       -- vim.cmd 'highlight Normal guibg=#000000 guifg=#ffffff'
       -- vim.cmd.colorscheme 'tokyonight-night'
 
@@ -899,9 +901,11 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'nord',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        theme = 'oxocarbon',
+        -- component_separators = { left = '', right = '' },
+        -- section_separators = { left = '', right = '' },
+        component_separators = { left = '|', right = '|' },
+        section_separators = { left = '|', right = '|' },
         disabled_filetypes = {
           statusline = {},
           winbar = {},
