@@ -90,6 +90,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- no identation
 vim.opt.list = false
 -- Set the width of a tab character
 vim.o.tabstop = 2
@@ -105,10 +106,15 @@ vim.o.expandtab = true
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
+-- remove the creationg of swap files
+vim.opt.swapfile = false
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
+
+-- it makes that the nvim will change cwd automatically when changing file
+-- vim.opt.autochdir = true
 
 -- Make line numbers default
 vim.opt.number = true
@@ -157,7 +163,7 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
+-- vim.opt.list = true
 -- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
@@ -184,6 +190,11 @@ vim.keymap.set('n', '<C-->', function()
   end)
   vim.o.guifont = font
 end)
+
+-- cd into the file folder
+vim.keymap.set('n', '<leader>cd', function()
+  vim.cmd('cd ' .. vim.fn.expand '%:p:h')
+end, { noremap = true, silent = true })
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -271,23 +282,6 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 
 require('lazy').setup({
-  -- -- NOTE: debug rust stuff
-  -- {
-  --   'mrcjkb/rustaceanvim',
-  --   config = function()
-  --     local mason_registry = require 'mason-registry'
-  --     local codelldb = mason_registry.get_package 'codelldb'
-  --     local extension_path = codelldb:get_install_path() .. '/extension/'
-  --     local codelldb_path = extension_path .. 'adapter/codelldb'
-  --     local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
-  --     local cfg = require 'rustaceanvim.config'
-  --     vim.g.restaceanvim = {
-  --       dap = {
-  --         adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
-  --       },
-  --     }
-  --   end,
-  -- },
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -819,9 +813,9 @@ require('lazy').setup({
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
         mapping = cmp.mapping.preset.insert {
           -- Select the [n]ext item
-          ['<C-n>'] = cmp.mapping.select_next_item(),
+          ['<C-j>'] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
+          ['<C-k>'] = cmp.mapping.select_prev_item(),
 
           -- Scroll the documentation window [b]ack / [f]orward
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -830,7 +824,7 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<CR>'] = cmp.mapping.confirm { select = true },
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
@@ -884,6 +878,11 @@ require('lazy').setup({
       -- vim.cmd.colorscheme 'nord'
       vim.opt.background = 'dark' -- set this to dark or light
       vim.cmd.colorscheme 'oxocarbon'
+      vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
+      -- vim.cmd 'highlight Normal guibg=#D8D7D0'
+
       -- vim.cmd 'highlight Normal guibg=#000000 guifg=#ffffff'
       -- vim.cmd.colorscheme 'tokyonight-night'
 

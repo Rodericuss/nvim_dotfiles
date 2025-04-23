@@ -369,4 +369,22 @@ return {
     'nvim-telescope/telescope-file-browser.nvim',
     dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
   },
+  -- -- NOTE: debug rust stuff
+  -- { 'mrcjkb/rustaceanvim' },
+  --   {
+  --     'glacambre/firenvim',
+  --     build = ':call firenvim#install(0)',
+  --     opts = {
+  --       localSettings = {
+  --         ['.*'] = {
+  --           takeover = 'never',
+  --         },
+  --       },
+  --       globalSettings = {
+  --         alt = 'all',
+  --         cmdline = 'neovim',
+  --         trigger = '<C-Enter>', -- <- Change this to something Chrome doesn’t intercept
+  --       },
+  --     },
+  --   },
 }
