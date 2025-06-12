@@ -92,89 +92,89 @@ return {
   },
 
   -- NOTE:  -->Noice<--
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    opts = {
-      health = {
-        checker = false,
-      },
-      cmdline = {
-        format = {
-          cmdline = {
-            pattern = '^:',
-            icon = ' ',
-            lang = 'vim',
-          },
-          search_down = {
-            kind = 'search',
-            pattern = '^/',
-            icon = ' ',
-            lang = 'regex',
-          },
-          search_up = {
-            kind = 'search',
-            pattern = '^%?',
-            icon = ' ',
-            lang = 'regex',
-          },
-          filter = {
-            pattern = '^:%s*!',
-            icon = '$',
-            lang = 'bash',
-          },
-          lua = {
-            pattern = '^:%s*lua%s+',
-            icon = '',
-            lang = 'lua',
-          },
-          help = {
-            pattern = '^:%s*h%s+',
-            icon = '',
-          },
-          input = {},
-        },
-      },
-      -- opts = {
-      --   win_options = {
-      --     winhighlight = {
-      --       Normal = 'NormalFloat',
-      --       -- FloatBorder = 'FloatBorder',
-      --     },
-      --   },
-      -- },
-      -- lsp = {
-      --   progress = {
-      --     enabled = true,
-      --   },
-      --   override = {
-      --     -- ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-      --     -- ['vim.lsp.util.stylize_markdown'] = true,
-      --     -- ['cmp.entry.get_documentation'] = true,
-      --   },
-      -- },
-      views = {
-        cmdline_popup = {
-          position = { row = 2, col = '20%' },
-          size = { width = '58%' },
-          -- border = 'none',
-        },
-      },
-      -- presets = {
-      --   long_message_to_split = true,
-      --   lsp_doc_border = true,
-      -- },
-      -- popupmenu = {
-      --   backend = 'cmp',
-      -- },
-      -- format = {},
-    },
-    dependencies = {
-      -- 'MunifTanjim/nui.nvim',
-      -- Optional: nvim-notify is only needed for the notification view
-      'rcarriga/nvim-notify',
-    },
-  },
+  -- {
+  --   'folke/noice.nvim',
+  --   event = 'VeryLazy',
+  --   opts = {
+  --     health = {
+  --       checker = false,
+  --     },
+  --     cmdline = {
+  --       format = {
+  --         cmdline = {
+  --           pattern = '^:',
+  --           icon = ' ',
+  --           lang = 'vim',
+  --         },
+  --         search_down = {
+  --           kind = 'search',
+  --           pattern = '^/',
+  --           icon = ' ',
+  --           lang = 'regex',
+  --         },
+  --         search_up = {
+  --           kind = 'search',
+  --           pattern = '^%?',
+  --           icon = ' ',
+  --           lang = 'regex',
+  --         },
+  --         filter = {
+  --           pattern = '^:%s*!',
+  --           icon = '$',
+  --           lang = 'bash',
+  --         },
+  --         lua = {
+  --           pattern = '^:%s*lua%s+',
+  --           icon = '',
+  --           lang = 'lua',
+  --         },
+  --         help = {
+  --           pattern = '^:%s*h%s+',
+  --           icon = '',
+  --         },
+  --         input = {},
+  --       },
+  --     },
+  --     -- opts = {
+  --     --   win_options = {
+  --     --     winhighlight = {
+  --     --       Normal = 'NormalFloat',
+  --     --       -- FloatBorder = 'FloatBorder',
+  --     --     },
+  --     --   },
+  --     -- },
+  --     -- lsp = {
+  --     --   progress = {
+  --     --     enabled = true,
+  --     --   },
+  --     --   override = {
+  --     --     -- ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+  --     --     -- ['vim.lsp.util.stylize_markdown'] = true,
+  --     --     -- ['cmp.entry.get_documentation'] = true,
+  --     --   },
+  --     -- },
+  --     views = {
+  --       cmdline_popup = {
+  --         position = { row = 2, col = '20%' },
+  --         size = { width = '58%' },
+  --         -- border = 'none',
+  --       },
+  --     },
+  --     -- presets = {
+  --     --   long_message_to_split = true,
+  --     --   lsp_doc_border = true,
+  --     -- },
+  --     -- popupmenu = {
+  --     --   backend = 'cmp',
+  --     -- },
+  --     -- format = {},
+  --   },
+  --   dependencies = {
+  --     -- 'MunifTanjim/nui.nvim',
+  --     -- Optional: nvim-notify is only needed for the notification view
+  --     'rcarriga/nvim-notify',
+  --   },
+  -- },
   -- NOTE:  -->dashboard stuff<--
   {
     'nvimdev/dashboard-nvim',
@@ -362,7 +362,6 @@ return {
     --   config = bar
     --   end,
   },
-  { 'shaunsingh/nord.nvim' },
   { 'nvim-tree/nvim-tree.lua', opts = {} },
   --> NOTE: telescope file use stuff
   {

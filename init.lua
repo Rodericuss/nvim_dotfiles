@@ -329,34 +329,34 @@ require('lazy').setup({
   },
 
   -- NOTE: -- noice config --
-  {
-    'folke/noice.nvim',
-    opts = {
-      lsp = {
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-        override = {
-          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-          ['vim.lsp.util.stylize_markdown'] = true,
-          ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
-        },
-      },
-      -- you can enable a preset for easier configuration
-      presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
-        long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
-        routes = {
-          {
-            view = 'notify',
-            filter = { event = 'msg_showmode', find = '^.*WARNING.*vim.treesitter.get_parser.*$' },
-            opts = { skip = true },
-          },
-        },
-      },
-    },
-  },
+  -- {
+  --   'folke/noice.nvim',
+  --   opts = {
+  --     lsp = {
+  --       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+  --       override = {
+  --         ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+  --         ['vim.lsp.util.stylize_markdown'] = true,
+  --         ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+  --       },
+  --     },
+  --     -- you can enable a preset for easier configuration
+  --     presets = {
+  --       bottom_search = true, -- use a classic bottom cmdline for search
+  --       command_palette = true, -- position the cmdline and popupmenu together
+  --       long_message_to_split = true, -- long messages will be sent to a split
+  --       inc_rename = false, -- enables an input dialog for inc-rename.nvim
+  --       lsp_doc_border = false, -- add a border to hover docs and signature help
+  --       routes = {
+  --         {
+  --           view = 'notify',
+  --           filter = { event = 'msg_showmode', find = '^.*WARNING.*vim.treesitter.get_parser.*$' },
+  --           opts = { skip = true },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   -- This is often very useful to both group configuration, as well as handle
   -- lazy loading plugins that don't need to be loaded immediately at startup.
@@ -876,11 +876,13 @@ require('lazy').setup({
       -- vim.cmd.colorscheme 'gruvbox-baby'
       -- vim.cmd.colorscheme 'vscode_modern_theme.nvim'
       -- vim.cmd.colorscheme 'nord'
-      vim.opt.background = 'dark' -- set this to dark or light
+      -- vim.cmd [[colorscheme synthwave84]]
+      -- vim.cmd.colorscheme 'synthwave84'
+      -- vim.opt.background = 'dark' -- set this to dark or light
       vim.cmd.colorscheme 'oxocarbon'
-      vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
       -- vim.cmd 'highlight Normal guibg=#D8D7D0'
 
       -- vim.cmd 'highlight Normal guibg=#000000 guifg=#ffffff'
