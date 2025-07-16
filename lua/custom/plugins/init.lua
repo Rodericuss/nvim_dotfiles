@@ -8,6 +8,107 @@ return {
   ----------------><----------------------------
   --> NOTE: lazygit stuff
   {
+    'code-biscuits/nvim-biscuits',
+    opts = { cursor_line_only = true },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+  },
+  --> NOTE: comfy number stuff
+  {
+    'mluders/comfy-line-numbers.nvim',
+    opts = {
+      labels = {
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '11',
+        '12',
+        '13',
+        '14',
+        '15',
+        '21',
+        '22',
+        '23',
+        '24',
+        '25',
+        '31',
+        '32',
+        '33',
+        '34',
+        '35',
+        '41',
+        '42',
+        '43',
+        '44',
+        '45',
+        '51',
+        '52',
+        '53',
+        '54',
+        '55',
+        '111',
+        '112',
+        '113',
+        '114',
+        '115',
+        '121',
+        '122',
+        '123',
+        '124',
+        '125',
+        '131',
+        '132',
+        '133',
+        '134',
+        '135',
+        '141',
+        '142',
+        '143',
+        '144',
+        '145',
+        '151',
+        '152',
+        '153',
+        '154',
+        '155',
+        '211',
+        '212',
+        '213',
+        '214',
+        '215',
+        '221',
+        '222',
+        '223',
+        '224',
+        '225',
+        '231',
+        '232',
+        '233',
+        '234',
+        '235',
+        '241',
+        '242',
+        '243',
+        '244',
+        '245',
+        '251',
+        '252',
+        '253',
+        '254',
+        '255',
+      },
+      up_key = 'k',
+      down_key = 'j',
+
+      -- Line numbers will be completely hidden for the following file/buffer types
+      hidden_file_types = { 'undotree' },
+      hidden_buffer_types = { 'terminal' },
+    },
+  },
+  {
     'kdheepak/lazygit.nvim',
     cmd = {
       'LazyGit',
@@ -83,7 +184,6 @@ return {
   },
   },
   --> NOTE: terminal stuff
-  -- amongst your other plugins
   {
     'akinsho/toggleterm.nvim',
     version = '*',
@@ -91,129 +191,45 @@ return {
     },
   },
 
-  -- NOTE:  -->Noice<--
+  -- -- NOTE: ->dashboard stuff<--
   -- {
-  --   'folke/noice.nvim',
-  --   event = 'VeryLazy',
-  --   opts = {
-  --     health = {
-  --       checker = false,
-  --     },
-  --     cmdline = {
-  --       format = {
-  --         cmdline = {
-  --           pattern = '^:',
-  --           icon = ' ',
-  --           lang = 'vim',
+  --   'nvimdev/dashboard-nvim',
+  --   event = 'VimEnter',
+  --   config = function()
+  --     require('dashboard').setup {
+  --       theme = 'hyper',
+  --       config = {
+  --         week_header = {
+  --           enable = true,
   --         },
-  --         search_down = {
-  --           kind = 'search',
-  --           pattern = '^/',
-  --           icon = ' ',
-  --           lang = 'regex',
+  --         shortcut = {
+  --           { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+  --           {
+  --             icon = ' ',
+  --             icon_hl = '@variable',
+  --             desc = 'Files',
+  --             group = 'Label',
+  --             action = 'Telescope find_files',
+  --             key = 'f',
+  --           },
+  --           -- {
+  --           --   desc = ' Apps',
+  --           --   group = 'DiagnosticHint',
+  --           --   action = 'Telescope app',
+  --           --   key = 'a',
+  --           -- },
+  --           -- {
+  --           --   desc = ' dotfiles',
+  --           --   group = 'Number',
+  --           --   action = 'Telescope dotfiles',
+  --           --   key = 'd',
+  --           -- },
   --         },
-  --         search_up = {
-  --           kind = 'search',
-  --           pattern = '^%?',
-  --           icon = ' ',
-  --           lang = 'regex',
-  --         },
-  --         filter = {
-  --           pattern = '^:%s*!',
-  --           icon = '$',
-  --           lang = 'bash',
-  --         },
-  --         lua = {
-  --           pattern = '^:%s*lua%s+',
-  --           icon = '',
-  --           lang = 'lua',
-  --         },
-  --         help = {
-  --           pattern = '^:%s*h%s+',
-  --           icon = '',
-  --         },
-  --         input = {},
   --       },
-  --     },
-  --     -- opts = {
-  --     --   win_options = {
-  --     --     winhighlight = {
-  --     --       Normal = 'NormalFloat',
-  --     --       -- FloatBorder = 'FloatBorder',
-  --     --     },
-  --     --   },
-  --     -- },
-  --     -- lsp = {
-  --     --   progress = {
-  --     --     enabled = true,
-  --     --   },
-  --     --   override = {
-  --     --     -- ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-  --     --     -- ['vim.lsp.util.stylize_markdown'] = true,
-  --     --     -- ['cmp.entry.get_documentation'] = true,
-  --     --   },
-  --     -- },
-  --     views = {
-  --       cmdline_popup = {
-  --         position = { row = 2, col = '20%' },
-  --         size = { width = '58%' },
-  --         -- border = 'none',
-  --       },
-  --     },
-  --     -- presets = {
-  --     --   long_message_to_split = true,
-  --     --   lsp_doc_border = true,
-  --     -- },
-  --     -- popupmenu = {
-  --     --   backend = 'cmp',
-  --     -- },
-  --     -- format = {},
-  --   },
-  --   dependencies = {
-  --     -- 'MunifTanjim/nui.nvim',
-  --     -- Optional: nvim-notify is only needed for the notification view
-  --     'rcarriga/nvim-notify',
-  --   },
+  --     }
+  --   end,
+  --   dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   -- },
-  -- NOTE:  -->dashboard stuff<--
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
-        theme = 'hyper',
-        config = {
-          week_header = {
-            enable = true,
-          },
-          shortcut = {
-            { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
-            {
-              icon = ' ',
-              icon_hl = '@variable',
-              desc = 'Files',
-              group = 'Label',
-              action = 'Telescope find_files',
-              key = 'f',
-            },
-            -- {
-            --   desc = ' Apps',
-            --   group = 'DiagnosticHint',
-            --   action = 'Telescope app',
-            --   key = 'a',
-            -- },
-            -- {
-            --   desc = ' dotfiles',
-            --   group = 'Number',
-            --   action = 'Telescope dotfiles',
-            --   key = 'd',
-            -- },
-          },
-        },
-      }
-    end,
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
-  },
   -- NOTE:  -->startfy <--
   -- {
   --   'startup-nvim/startup.nvim',
