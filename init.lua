@@ -1,88 +1,88 @@
 --[[
 
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-========                                    .-----.          ========
-========         .----------------------.   | === |          ========
-========         |.-""""""""""""""""""-.|   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||   KICKSTART.NVIM   ||   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||                    ||   |-----|          ========
-========         ||:Tutor              ||   |:::::|          ========
-========         |'-..................-'|   |____o|          ========
-========         `"")----------------(""`   ___________      ========
-========        /::::::::::|  |::::::::::\  \ no mouse \     ========
-========       /:::========|  |==hjkl==:::\  \ required \    ========
-========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
-========                                                     ========
-=====================================================================
-=====================================================================
+  =====================================================================
+  ==================== READ THIS BEFORE CONTINUING ====================
+  =====================================================================
+  ========                                    .-----.          ========
+  ========         .----------------------.   | === |          ========
+  ========         |.-""""""""""""""""""-.|   |-----|          ========
+  ========         ||                    ||   | === |          ========
+  ========         ||   KICKSTART.NVIM   ||   |-----|          ========
+  ========         ||                    ||   | === |          ========
+  ========         ||                    ||   |-----|          ========
+  ========         ||:Tutor              ||   |:::::|          ========
+  ========         |'-..................-'|   |____o|          ========
+  ========         `"")----------------(""`   ___________      ========
+  ========        /::::::::::|  |::::::::::\  \ no mouse \     ========
+  ========       /:::========|  |==hjkl==:::\  \ required \    ========
+  ========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
+  ========                                                     ========
+  =====================================================================
+  =====================================================================
 
-What is Kickstart?
+  What is Kickstart?
 
-  Kickstart.nvim is *not* a distribution.
+    Kickstart.nvim is *not* a distribution.
 
-  Kickstart.nvim is a starting point for your own configuration.
-    The goal is that you can read every line of code, top-to-bottom, understand
-    what your configuration is doing, and modify it to suit your needs.
+    Kickstart.nvim is a starting point for your own configuration.
+      The goal is that you can read every line of code, top-to-bottom, understand
+      what your configuration is doing, and modify it to suit your needs.
 
-    Once you've done that, you can start exploring, configuring and tinkering to
-    make Neovim your own! That might mean leaving Kickstart just the way it is for a while
-    or immediately breaking it into modular pieces. It's up to you!
+      Once you've done that, you can start exploring, configuring and tinkering to
+      make Neovim your own! That might mean leaving Kickstart just the way it is for a while
+      or immediately breaking it into modular pieces. It's up to you!
 
-    If you don't know anything about Lua, I recommend taking some time to read through
-    a guide. One possible example which will only take 10-15 minutes:
-      - https://learnxinyminutes.com/docs/lua/
+      If you don't know anything about Lua, I recommend taking some time to read through
+      a guide. One possible example which will only take 10-15 minutes:
+        - https://learnxinyminutes.com/docs/lua/
 
-    After understanding a bit more about Lua, you can use `:help lua-guide` as a
-    reference for how Neovim integrates Lua.
-    - :help lua-guide
-    - (or HTML version): https://neovim.io/doc/user/lua-guide.html
+      After understanding a bit more about Lua, you can use `:help lua-guide` as a
+      reference for how Neovim integrates Lua.
+      - :help lua-guide
+      - (or HTML version): https://neovim.io/doc/user/lua-guide.html
 
-Kickstart Guide:
+  Kickstart Guide:
 
-  TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
+    TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
 
-    If you don't know what this means, type the following:
-      - <escape key>
-      - :
-      - Tutor
-      - <enter key>
+      If you don't know what this means, type the following:
+        - <escape key>
+        - :
+        - Tutor
+        - <enter key>
 
-    (If you already know the Neovim basics, you can skip this step.)
+      (If you already know the Neovim basics, you can skip this step.)
 
-  Once you've completed that, you can continue working through **AND READING** the rest
-  of the kickstart init.lua.
+    Once you've completed that, you can continue working through **AND READING** the rest
+    of the kickstart init.lua.
 
-  Next, run AND READ `:help`.
-    This will open up a help window with some basic information
-    about reading, navigating and searching the builtin help documentation.
+    Next, run AND READ `:help`.
+      This will open up a help window with some basic information
+      about reading, navigating and searching the builtin help documentation.
 
-    This should be the first place you go to look when you're stuck or confused
-    with something. It's one of my favorite Neovim features.
+      This should be the first place you go to look when you're stuck or confused
+      with something. It's one of my favorite Neovim features.
 
-    MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
-    which is very useful when you're not exactly sure of what you're looking for.
+      MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
+      which is very useful when you're not exactly sure of what you're looking for.
 
-  I have left several `:help X` comments throughout the init.lua
-    These are hints about where to find more information about the relevant settings,
-    plugins or Neovim features used in Kickstart.
+    I have left several `:help X` comments throughout the init.lua
+      These are hints about where to find more information about the relevant settings,
+      plugins or Neovim features used in Kickstart.
 
-   NOTE: Look for lines like this
+     NOTE: Look for lines like this
 
-    Throughout the file. These are for you, the reader, to help you understand what is happening.
-    Feel free to delete them once you know what you're doing, but they should serve as a guide
-    for when you are first encountering a few different constructs in your Neovim config.
+      Throughout the file. These are for you, the reader, to help you understand what is happening.
+      Feel free to delete them once you know what you're doing, but they should serve as a guide
+      for when you are first encountering a few different constructs in your Neovim config.
 
-If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
+  If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
 
-I hope you enjoy your Neovim journey,
-- TJ
+  I hope you enjoy your Neovim journey,
+  - TJ
 
-P.S. You can delete this when you're done too. It's your config now! :)
---]]
+  P.S. You can delete this when you're done too. It's your config now! :)
+  --]]
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -196,6 +196,27 @@ vim.keymap.set('n', '<leader>cd', function()
   vim.cmd('cd ' .. vim.fn.expand '%:p:h')
 end, { noremap = true, silent = true })
 
+-- ===================================================================================================|||
+--
+--NOTE:
+
+vim.keymap.set('n', '<A-1>', ':BufferGoto 1<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-2>', ':BufferGoto 2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-3>', ':BufferGoto 3<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-4>', ':BufferGoto 4<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-5>', ':BufferGoto 5<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-6>', ':BufferGoto 6<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-7>', ':BufferGoto 7<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-8>', ':BufferGoto 8<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-9>', ':BufferGoto 9<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-0>', ':BufferLast<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-b>', ':BufferPin<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-w>', ':BufferClose<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-u>', ':BufferRestore<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-d>', ':BarbarDisable<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-e>', ':BarbarEnable<CR>', { noremap = true, silent = true })
+
+-- ===================================================================================================|||
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 -- set F9 insted of ESC to go to normal mode
@@ -210,14 +231,15 @@ vim.api.nvim_set_keymap('n', '<leader>l', ':q<CR>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<leader>L', ':q!<CR>', { noremap = true, silent = true })
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<ESC><ESC>', '<cmd>nohlsearch<CR>')
+vim.api.nvim_set_keymap('n', '<leader>e', ':Neotree toggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<ESC>', '<cmd>nohlsearch<CR>')
 
 -- NOTE: telescope file_browser keymap
 vim.keymap.set('n', '<space>sc', ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -281,7 +303,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- NOTE: Here is where you install your plugins.
 
-require('lazy').setup({
+require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -328,35 +350,6 @@ require('lazy').setup({
     },
   },
 
-  -- NOTE: -- noice config --
-  -- {
-  --   'folke/noice.nvim',
-  --   opts = {
-  --     lsp = {
-  --       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-  --       override = {
-  --         ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-  --         ['vim.lsp.util.stylize_markdown'] = true,
-  --         ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
-  --       },
-  --     },
-  --     -- you can enable a preset for easier configuration
-  --     presets = {
-  --       bottom_search = true, -- use a classic bottom cmdline for search
-  --       command_palette = true, -- position the cmdline and popupmenu together
-  --       long_message_to_split = true, -- long messages will be sent to a split
-  --       inc_rename = false, -- enables an input dialog for inc-rename.nvim
-  --       lsp_doc_border = false, -- add a border to hover docs and signature help
-  --       routes = {
-  --         {
-  --           view = 'notify',
-  --           filter = { event = 'msg_showmode', find = '^.*WARNING.*vim.treesitter.get_parser.*$' },
-  --           opts = { skip = true },
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   -- This is often very useful to both group configuration, as well as handle
   -- lazy loading plugins that don't need to be loaded immediately at startup.
@@ -377,6 +370,7 @@ require('lazy').setup({
     'folke/which-key.nvim',
     event = 'VeryLazy',
     opts = {
+      preset = 'helix',
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
@@ -874,12 +868,24 @@ require('lazy').setup({
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       -- vim.cmd.colorscheme 'rose-pine'
       -- vim.cmd.colorscheme 'gruvbox-baby'
+      vim.api.nvim_set_hl(0, 'DropBarKind', { fg = '#fabd2f', bg = '#1d2021' })
       -- vim.cmd.colorscheme 'vscode_modern_theme.nvim'
       -- vim.cmd.colorscheme 'nord'
       -- vim.cmd [[colorscheme synthwave84]]
       -- vim.cmd.colorscheme 'synthwave84'
       -- vim.opt.background = 'dark' -- set this to dark or light
       vim.cmd.colorscheme 'oxocarbon'
+      -- vim.cmd.colorscheme 'miasma'
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'elixir',
+        callback = function()
+          vim.api.nvim_set_hl(0, '@keyword.elixir', { fg = '#ee5396', bg = 'NONE' })
+          vim.api.nvim_set_hl(0, '@type.elixir', { fg = '#ee5396', bg = 'NONE' })
+          vim.api.nvim_set_hl(0, '@constructor.elixir', { fg = '#ee5396', bg = 'NONE' })
+        end,
+      })
+
+      -- vim.cmd.colorscheme 'nightfox'
       -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
       -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
       -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
@@ -967,7 +973,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'elixir', 'eex', 'heex', 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -993,7 +999,6 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
-
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -1012,28 +1017,19 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
-}, {
-  ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
-})
+}
 
+-- Faz o filetype heex herdar snippets de html
+require('luasnip').filetype_extend('heex', { 'html' })
+
+-- Garante que arquivos .html.heex tenham filetype correto
+-- vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+--   pattern = '*.html.heex',
+--   callback = function()
+--     vim.bo.filetype = 'heex'
+--     vim.bo.syntax = 'html'
+--   end,
+-- })
 vim.diagnostic.config { virtual_text = false }
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
