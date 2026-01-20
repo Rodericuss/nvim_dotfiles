@@ -733,7 +733,7 @@ require('lazy').setup {
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { json = true, javascript = true, handlebars = true, ts = true, c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true }
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -741,12 +741,7 @@ require('lazy').setup {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { 'prettierd', 'prettier' },
       },
     },
   },
@@ -868,13 +863,17 @@ require('lazy').setup {
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       -- vim.cmd.colorscheme 'rose-pine'
       -- vim.cmd.colorscheme 'gruvbox-baby'
-      vim.api.nvim_set_hl(0, 'DropBarKind', { fg = '#fabd2f', bg = '#1d2021' })
+      -- vim.api.nvim_set_hl(0, 'DropBarKind', { fg = '#fabd2f', bg = '#1d2021' })
       -- vim.cmd.colorscheme 'vscode_modern_theme.nvim'
       -- vim.cmd.colorscheme 'nord'
       -- vim.cmd [[colorscheme synthwave84]]
       -- vim.cmd.colorscheme 'synthwave84'
-      -- vim.opt.background = 'dark' -- set this to dark or light
-      vim.cmd.colorscheme 'oxocarbon'
+      vim.opt.background = 'dark'
+      vim.cmd.colorscheme 'carbonfox'
+      vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
+      -- vim.cmd 'highlight Normal guibg=#D8D7D0'
       -- vim.cmd.colorscheme 'miasma'
       vim.api.nvim_create_autocmd('FileType', {
         pattern = 'elixir',
@@ -884,12 +883,6 @@ require('lazy').setup {
           vim.api.nvim_set_hl(0, '@constructor.elixir', { fg = '#ee5396', bg = 'NONE' })
         end,
       })
-
-      -- vim.cmd.colorscheme 'nightfox'
-      -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-      -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-      -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
-      -- vim.cmd 'highlight Normal guibg=#D8D7D0'
 
       -- vim.cmd 'highlight Normal guibg=#000000 guifg=#ffffff'
       -- vim.cmd.colorscheme 'tokyonight-night'
@@ -903,50 +896,70 @@ require('lazy').setup {
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   --> NOTE: lualine stuff
+
   {
     'nvim-lualine/lualine.nvim',
-    opts = {
-      options = {
-        icons_enabled = true,
-        theme = 'oxocarbon',
-        -- component_separators = { left = '', right = '' },
-        -- section_separators = { left = '', right = '' },
-        component_separators = { left = '|', right = '|' },
-        section_separators = { left = '|', right = '|' },
-        disabled_filetypes = {
-          statusline = {},
-          winbar = {},
+    config = function()
+      local custom_theme = require 'lualine.themes.carbonfox'
+
+      local bg_color = '#000000' -- sua cor desejada
+
+      -- Função helper para modificar o background com segurança
+      local function set_bg(mode, section, color)
+        if custom_theme[mode] and custom_theme[mode][section] then
+          custom_theme[mode][section].bg = color
+        end
+      end
+
+      -- Modifica apenas a seção 'c' de cada modo
+      set_bg('normal', 'c', bg_color)
+      set_bg('insert', 'c', bg_color)
+      set_bg('visual', 'c', bg_color)
+      set_bg('replace', 'c', bg_color)
+      set_bg('command', 'c', bg_color)
+      set_bg('inactive', 'c', bg_color)
+
+      require('lualine').setup {
+        options = {
+          icons_enabled = true,
+          theme = custom_theme,
+          component_separators = { left = '|', right = '|' },
+          section_separators = { left = '|', right = '|' },
+          disabled_filetypes = {
+            statusline = {},
+            winbar = {},
+          },
+          ignore_focus = {},
+          always_divide_middle = true,
+          globalstatus = false,
+          refresh = {
+            statusline = 1000,
+            tabline = 1000,
+            winbar = 1000,
+          },
         },
-        ignore_focus = {},
-        always_divide_middle = true,
-        globalstatus = false,
-        refresh = {
-          statusline = 1000,
-          tabline = 1000,
-          winbar = 1000,
+        sections = {
+          lualine_a = { 'mode' },
+          lualine_b = { 'branch', 'diff', 'diagnostics' },
+          lualine_c = { 'filename' },
+          lualine_x = { 'encoding', 'fileformat', 'filetype' },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' },
         },
-      },
-      sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { 'filename' },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' },
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { 'filename' },
-        lualine_x = { 'location' },
-        lualine_y = {},
-        lualine_z = {},
-      },
-      tabline = {},
-      winbar = {},
-      inactive_winbar = {},
-      extensions = {},
-    },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = { 'filename' },
+          lualine_x = { 'location' },
+          lualine_y = {},
+          lualine_z = {},
+        },
+        tabline = {},
+        winbar = {},
+        inactive_winbar = {},
+        extensions = {},
+      }
+    end,
   },
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',

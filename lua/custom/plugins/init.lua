@@ -12,13 +12,13 @@ return {
     cmd = { 'TSPlaygroundToggle', 'TSNodeUnderCursor' },
   },
   --> NOTE: barbar stuff
-  {
-    'romgrk/barbar.nvim',
-    dependencies = {
-      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-    },
-  },
+  -- {
+  --   'romgrk/barbar.nvim',
+  --   dependencies = {
+  --     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+  --     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+  --   },
+  -- },
   --> NOTE: lazygit stuff
   {
     'code-biscuits/nvim-biscuits',
@@ -307,7 +307,7 @@ return {
     },
   },
   -- { 'luisiacc/gruvbox-baby' },
-  -- { 'EdenEast/nightfox.nvim' },
+  { 'EdenEast/nightfox.nvim' },
   { 'nyoom-engineering/oxocarbon.nvim' },
   {
     'nvim-neo-tree/neo-tree.nvim',
