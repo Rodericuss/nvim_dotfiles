@@ -139,6 +139,7 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
+vim.opt.background = 'dark'
 -- Save undo history
 vim.opt.undofile = true
 
@@ -175,8 +176,8 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
-vim.o.guifont = 'JetBrainsMono Nerd Font:h12'
-
+vim.o.guifont = 'FiraCode\\ Nerd\\ Font:h10'
+vim.keymap.set('t', '<C-S-v>', '<C-\\><C-N>"+pi', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-=>', function()
   local font = vim.o.guifont:gsub(':h(%d+)', function(size)
     return ':h' .. (tonumber(size) + 1)
@@ -331,7 +332,7 @@ require('lazy').setup {
 
   --  This is equivalent to:
   --    require('Comment').setup({})
-  { 'kevinhwang91/nvim-hlslens', opts = {} },
+  -- { 'kevinhwang91/nvim-hlslens', opts = {} },
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
   --    require('gitsigns').setup({ ... })
@@ -861,20 +862,13 @@ require('lazy').setup {
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      -- vim.cmd.colorscheme 'rose-pine'
-      -- vim.cmd.colorscheme 'gruvbox-baby'
-      -- vim.api.nvim_set_hl(0, 'DropBarKind', { fg = '#fabd2f', bg = '#1d2021' })
-      -- vim.cmd.colorscheme 'vscode_modern_theme.nvim'
-      -- vim.cmd.colorscheme 'nord'
-      -- vim.cmd [[colorscheme synthwave84]]
-      -- vim.cmd.colorscheme 'synthwave84'
-      vim.opt.background = 'dark'
-      vim.cmd.colorscheme 'carbonfox'
-      vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
+      vim.cmd.colorscheme 'borland'
+      vim.api.nvim_set_hl(0, 'WinBar', { bg = '#003078', fg = '#FFFF55' })
+      vim.api.nvim_set_hl(0, 'WinBarNC', { bg = '#003078', fg = '#AAAAAA' })
+      -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
       -- vim.cmd 'highlight Normal guibg=#D8D7D0'
-      -- vim.cmd.colorscheme 'miasma'
       vim.api.nvim_create_autocmd('FileType', {
         pattern = 'elixir',
         callback = function()
@@ -883,9 +877,6 @@ require('lazy').setup {
           vim.api.nvim_set_hl(0, '@constructor.elixir', { fg = '#ee5396', bg = 'NONE' })
         end,
       })
-
-      -- vim.cmd 'highlight Normal guibg=#000000 guifg=#ffffff'
-      -- vim.cmd.colorscheme 'tokyonight-night'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -902,7 +893,7 @@ require('lazy').setup {
     config = function()
       local custom_theme = require 'lualine.themes.carbonfox'
 
-      local bg_color = '#000000' -- sua cor desejada
+      local bg_color = '003078' -- sua cor desejada
 
       -- Função helper para modificar o background com segurança
       local function set_bg(mode, section, color)
