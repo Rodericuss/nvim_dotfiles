@@ -90,6 +90,11 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- padding
+vim.g.neovide_padding_top = 0
+vim.g.neovide_padding_bottom = 0
+vim.g.neovide_padding_left = 0
+vim.g.neovide_padding_right = 0
 -- no identation
 vim.opt.list = false
 -- Set the width of a tab character
@@ -318,16 +323,35 @@ require('lazy').setup {
   {
     'akinsho/toggleterm.nvim',
     opts = {
-
-      size = 13,
       open_mapping = [[<c-z>]],
-      shade_filetypes = {},
       shade_terminals = true,
-      shading_factor = 1,
+      shading_factor = -30,
       start_in_insert = true,
       persist_size = true,
+      persist_mode = true,
       direction = 'float',
+      close_on_exit = true,
+      terminal_mappings = true,
+      float_opts = {
+        border = 'curved',
+        width = math.floor(vim.o.columns * 0.85),
+        height = math.floor(vim.o.lines * 0.85),
+        winblend = 3,
+      },
     },
+    config = function(_, opts)
+      require('toggleterm').setup(opts)
+
+      local function set_terminal_keymaps()
+        local o = { buffer = 0 }
+        vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], o)
+      end
+
+      vim.api.nvim_create_autocmd('TermOpen', {
+        pattern = 'term://*toggleterm#*',
+        callback = set_terminal_keymaps,
+      })
+    end,
   },
 
   --  This is equivalent to:
@@ -862,9 +886,9 @@ require('lazy').setup {
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'borland'
-      vim.api.nvim_set_hl(0, 'WinBar', { bg = '#003078', fg = '#FFFF55' })
-      vim.api.nvim_set_hl(0, 'WinBarNC', { bg = '#003078', fg = '#AAAAAA' })
+      vim.cmd.colorscheme 'carbonfox'
+      vim.api.nvim_set_hl(0, 'WinBar', { bg = '#161616', fg = '#FFFF55' })
+      vim.api.nvim_set_hl(0, 'WinBarNC', { bg = '#161616', fg = '#AAAAAA' })
       -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
       -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
       -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
@@ -893,7 +917,7 @@ require('lazy').setup {
     config = function()
       local custom_theme = require 'lualine.themes.carbonfox'
 
-      local bg_color = '003078' -- sua cor desejada
+      local bg_color = '161616' -- sua cor desejada
 
       -- Função helper para modificar o background com segurança
       local function set_bg(mode, section, color)

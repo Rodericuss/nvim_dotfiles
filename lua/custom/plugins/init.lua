@@ -12,14 +12,82 @@ return {
     'nvim-treesitter/playground',
     cmd = { 'TSPlaygroundToggle', 'TSNodeUnderCursor' },
   },
-  --> NOTE: barbar stuff
-  -- {
-  --   'romgrk/barbar.nvim',
-  --   dependencies = {
-  --     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-  --     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-  --   },
-  -- },
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('dashboard').setup {
+        theme = 'doom',
+        hide = {
+          statusline = true,
+          tabline = true,
+          winbar = true,
+        },
+        config = {
+          vertical_center = true,
+          header = {
+            '',
+            ' ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+            ' ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+            ' ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+            ' ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+            ' ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+            ' ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+            '',
+            ' [ Arch Linux • Hyprland • Neovim ] ',
+            '',
+          },
+          center = {
+            {
+              icon = '  ',
+              icon_hl = 'DashboardIcon',
+              desc = 'New File',
+              desc_hl = 'DashboardDesc',
+              key = 'n',
+              key_hl = 'DashboardKey',
+              key_format = ' [%s]',
+              action = 'enew',
+            },
+            {
+              icon = '  ',
+              icon_hl = 'DashboardIcon',
+              desc = 'Find File',
+              desc_hl = 'DashboardDesc',
+              key = 'f',
+              key_hl = 'DashboardKey',
+              key_format = ' [%s]',
+              action = 'Telescope find_files',
+            },
+            {
+              icon = '  ',
+              icon_hl = 'DashboardIcon',
+              desc = 'Live Grep',
+              desc_hl = 'DashboardDesc',
+              key = 'g',
+              key_hl = 'DashboardKey',
+              key_format = ' [%s]',
+              action = 'Telescope live_grep',
+            },
+          },
+          footer = function()
+            local stats = require('lazy').stats()
+            return {
+              '',
+              '⚡ ' .. stats.loaded .. '/' .. stats.count .. ' plugins loaded',
+            }
+          end,
+        },
+      }
+
+      vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#39ff14', bold = true })
+      vim.api.nvim_set_hl(0, 'DashboardDesc', { fg = '#00ffff' })
+      vim.api.nvim_set_hl(0, 'DashboardIcon', { fg = '#ff9900' })
+      vim.api.nvim_set_hl(0, 'DashboardKey', { fg = '#ff0055', bold = true })
+      vim.api.nvim_set_hl(0, 'DashboardShortCut', { fg = '#ff0055' })
+      vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#555555', italic = true })
+    end,
+  },
   --> NOTE: lazygit stuff
   {
     'code-biscuits/nvim-biscuits',
@@ -28,100 +96,6 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
   },
-  -- > NOTE: comfy number stuff
-  -- {
-  --   'mluders/comfy-line-numbers.nvim',
-  --   opts = {
-  --     labels = {
-  --       '1',
-  --       '2',
-  --       '3',
-  --       '4',
-  --       '5',
-  --       '11',
-  --       '12',
-  --       '13',
-  --       '14',
-  --       '15',
-  --       '21',
-  --       '22',
-  --       '23',
-  --       '24',
-  --       '25',
-  --       '31',
-  --       '32',
-  --       '33',
-  --       '34',
-  --       '35',
-  --       '41',
-  --       '42',
-  --       '43',
-  --       '44',
-  --       '45',
-  --       '51',
-  --       '52',
-  --       '53',
-  --       '54',
-  --       '55',
-  --       '111',
-  --       '112',
-  --       '113',
-  --       '114',
-  --       '115',
-  --       '121',
-  --       '122',
-  --       '123',
-  --       '124',
-  --       '125',
-  --       '131',
-  --       '132',
-  --       '133',
-  --       '134',
-  --       '135',
-  --       '141',
-  --       '142',
-  --       '143',
-  --       '144',
-  --       '145',
-  --       '151',
-  --       '152',
-  --       '153',
-  --       '154',
-  --       '155',
-  --       '211',
-  --       '212',
-  --       '213',
-  --       '214',
-  --       '215',
-  --       '221',
-  --       '222',
-  --       '223',
-  --       '224',
-  --       '225',
-  --       '231',
-  --       '232',
-  --       '233',
-  --       '234',
-  --       '235',
-  --       '241',
-  --       '242',
-  --       '243',
-  --       '244',
-  --       '245',
-  --       '251',
-  --       '252',
-  --       '253',
-  --       '254',
-  --       '255',
-  --     },
-  --     up_key = 'k',
-  --     down_key = 'j',
-  --
-  --     -- Line numbers will be completely hidden for the following file/buffer types
-  --     hidden_file_types = { 'undotree' },
-  --     hidden_buffer_types = { 'terminal' },
-  --   },
-  -- },
   {
     'kdheepak/lazygit.nvim',
     cmd = {
@@ -179,13 +153,6 @@ return {
     { "<leader>M", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   },
-  },
-  --> NOTE: terminal stuff
-  {
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    opts = {--[[ things you want to change go here]]
-    },
   },
 
   -- NOTE:  -->undotree <--
