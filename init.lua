@@ -140,7 +140,8 @@ vim.opt.showmode = false
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
-
+-- sets helix selection automation as default
+vim.opt.paradigm = 'helix'
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -421,7 +422,7 @@ require('lazy').setup {
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
+    branch = 'master',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -467,12 +468,23 @@ require('lazy').setup {
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
-        --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          prompt_prefix = '   ',
+          selection_caret = ' ',
+          entry_prefix = ' ',
+          sorting_strategy = 'ascending',
+          layout_config = {
+            horizontal = {
+              prompt_position = 'top',
+              preview_width = 0.55,
+            },
+            width = 0.87,
+            height = 0.80,
+          },
+          mappings = {
+            n = { ['q'] = require('telescope.actions').close },
+          },
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
@@ -886,13 +898,33 @@ require('lazy').setup {
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'carbonfox'
+      vim.cmd.colorscheme 'cybrcore'
       vim.api.nvim_set_hl(0, 'WinBar', { bg = '#161616', fg = '#FFFF55' })
       vim.api.nvim_set_hl(0, 'WinBarNC', { bg = '#161616', fg = '#AAAAAA' })
       -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
       -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
       -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
       -- vim.cmd 'highlight Normal guibg=#D8D7D0'
+      local bg = '#0d0d0d'
+      local prompt_bg = '#1a1a1a'
+      local title_fg = '#ffffff'
+      local title_bg = '#3a3a3a' -- neutral dark gray instead of red/green
+
+      vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = bg })
+      vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = bg, fg = '#3a3a3a' }) -- subtle border, not invisible
+      vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { bg = prompt_bg })
+      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = prompt_bg, fg = prompt_bg })
+      vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = title_bg, fg = title_fg })
+      vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = title_bg, fg = title_fg })
+      vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { bg = bg, fg = bg })
+      vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { bg = bg, fg = '#3a3a3a' })
+      vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { bg = bg, fg = '#3a3a3a' })
+      vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', { bg = bg })
+      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = prompt_bg, fg = prompt_bg })
+      vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { bg = bg, fg = bg }) -- was '#3a3a3a', make it bg
+      vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { bg = bg, fg = bg }) -- same here
+      vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = bg, fg = bg }) -- outer border too
+
       vim.api.nvim_create_autocmd('FileType', {
         pattern = 'elixir',
         callback = function()
@@ -915,9 +947,9 @@ require('lazy').setup {
   {
     'nvim-lualine/lualine.nvim',
     config = function()
-      local custom_theme = require 'lualine.themes.carbonfox'
+      local custom_theme = require 'lualine.themes.cyberdream'
 
-      local bg_color = '161616' -- sua cor desejada
+      local bg_color = '000000' -- sua cor desejada
 
       -- Função helper para modificar o background com segurança
       local function set_bg(mode, section, color)
@@ -999,32 +1031,38 @@ require('lazy').setup {
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     build = ':TSUpdate',
-    opts = {
-      ensure_installed = { 'elixir', 'eex', 'heex', 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
-    config = function(_, opts)
-      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+    init = function()
+      local parsers = {
+        'elixir',
+        'eex',
+        'heex',
+        'bash',
+        'c',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'vim',
+        'vimdoc',
+        'python',
+        'javascript',
+      }
+      local installed = require('nvim-treesitter.config').get_installed()
+      local to_install = vim.tbl_filter(function(p)
+        return not vim.tbl_contains(installed, p)
+      end, parsers)
+      if #to_install > 0 then
+        require('nvim-treesitter').install(to_install)
+      end
 
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup(opts)
-
-      -- There are additional nvim-treesitter modules that you can use to interact
-      -- with nvim-treesitter. You should go explore a few and see what interests you:
-      --
-      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function()
+          pcall(vim.treesitter.start)
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
     end,
   },
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the

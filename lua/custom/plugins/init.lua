@@ -6,6 +6,11 @@ return {
 
   -- TODO: AQUI IREI COLOCAR TODOS MEUS PLUGINS, EU ACHO:
   ----------------><----------------------------
+  {
+    'scottmckendry/cyberdream.nvim',
+    lazy = false,
+    priority = 1000,
+  },
   { 'letorbi/vim-colors-modern-borland' },
   { 'nanotee/zoxide.vim' },
   {
@@ -118,7 +123,7 @@ return {
   --> NOTE: tagbar stuff
   { 'preservim/tagbar' },
   --> NOTE: dropbar stuff
-  { 'Bekaboo/dropbar.nvim' },
+  -- { 'Bekaboo/dropbar.nvim' },
   --> NOTE: harpoon stuff
   { 'nvim-lua/plenary.nvim' },
   {
